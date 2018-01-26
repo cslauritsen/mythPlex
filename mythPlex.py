@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.4
+#!/usr/bin/env python3
 
 import os
 import sys
@@ -61,7 +61,11 @@ def main():
         ep_start_time = datetime.strftime(ep_start_time, '%Y-%m-%d %H%M')
 
         # parse show name for file-system safe name
-        title = re.sub('[\[\]/\\;><&*%=+@!#^()|?]', '_', title)
+        if title:
+            title = re.sub('[\[\]/\\;><&*%=+@!#^()|?]', '_', title)
+        else:
+            title = 'Unknown'
+
         episode_name = title + " - S" + ep_season + "E" + ep_num
 
         if (ep_title is not None):
